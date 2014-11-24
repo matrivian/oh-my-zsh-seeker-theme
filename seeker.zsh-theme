@@ -18,12 +18,8 @@ function _pyenv_prompt_info {
         echo "${ZSH_THEME_PYENV_PROMPT_PREFIX}$(pyenv_prompt_info)${ZSH_THEME_PYENV_PROMPT_SUFFIX}"
 }
 
-function _rvm_prompt_info () {
-  [ -f $HOME/.rvm/bin/rvm-prompt ] || return 1
-  local rvm_prompt
-  rvm_prompt=$($HOME/.rvm/bin/rvm-prompt ${=ZSH_THEME_RVM_PROMPT_OPTIONS} 2>/dev/null)
-  [[ "${rvm_prompt}x" = "x" ]] && return 1
-  echo "${ZSH_THEME_RVM_PROMPT_PREFIX}${rvm_prompt}${ZSH_THEME_RVM_PROMPT_SUFFIX}"
+function _rbenv_prompt_info {
+  [[ -n $(rbenv_prompt_info) ]] && echo "${ZSH_THEME_RBENV_PROMPT_PREFIX}$(rbenv_prompt_info)${ZSH_THEME_RBENV_PROMPT_SUFFIX}"
 }
 
 function prompt_char {
@@ -32,7 +28,7 @@ function prompt_char {
 
 PROMPT='%(?, ,%{$fg[red]%}FAIL%{$reset_color%}
 )
-%{$fg[yellow]%}%n%{$reset_color%}@%{$fg[yellow]%}%m%{$reset_color%}:%{$fg_bold[blue]%}%~%{$reset_color%} $(_virtualenv_prompt_info)$(_pyenv_prompt_info)$(_rvm_prompt_info)$(_git_prompt_info)$(_hg_prompt_info) % %{$reset_color%}
+%{$fg[yellow]%}%n%{$reset_color%}@%{$fg[yellow]%}%m%{$reset_color%}:%{$fg_bold[blue]%}%~%{$reset_color%} $(_virtualenv_prompt_info)$(_pyenv_prompt_info)$(_rbenv_prompt_info)$(_git_prompt_info)$(_hg_prompt_info) % %{$reset_color%}
 $(prompt_char) '
 
 RPROMPT='%{$fg[green]%}[%*]%{$reset_color%}'
@@ -53,5 +49,5 @@ ZSH_THEME_VIRTUAL_ENV_PROMPT_SUFFIX="%{$fg_bold[red]%}›%{$reset_color%} "
 ZSH_THEME_PYENV_PROMPT_PREFIX="%{$fg_bold[red]%}python:‹%{$fg[magenta]%}"
 ZSH_THEME_PYENV_PROMPT_SUFFIX="%{$fg_bold[red]%}›%{$reset_color%} "
 
-ZSH_THEME_RVM_PROMPT_PREFIX="%{$fg_bold[red]%}rvm:‹%{$fg[magenta]%}"
-ZSH_THEME_RVM_PROMPT_SUFFIX="%{$fg_bold[red]%}›%{$reset_color%} "
+ZSH_THEME_RBENV_PROMPT_PREFIX="%{$fg_bold[red]%}rbenv:‹%{$fg[magenta]%}"
+ZSH_THEME_RBENV_PROMPT_SUFFIX="%{$fg_bold[red]%}›%{$reset_color%} "
