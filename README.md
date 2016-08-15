@@ -15,11 +15,11 @@ Installation
 
 The quickly way:
 
-    curl -L https://raw.github.com/tonyseek/oh-my-zsh-seeker-theme/master/install.sh | sh
+    curl -L https://raw.githubusercontent.com/matrivian/oh-my-zsh-seeker-theme/master/install.sh | sh
 
 Or:
 
-    wget https://raw.github.com/tonyseek/oh-my-zsh-seeker-theme/master/install.sh -O - | sh
+    wget https://raw.githubusercontent.com/matrivian/oh-my-zsh-seeker-theme/master/install.sh -O - | sh
 
 Or you can cloning and creating a symbol link by yourself:
 
